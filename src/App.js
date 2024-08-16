@@ -7,8 +7,11 @@ export default function App() {
   })
 
   useEffect(() => {
-    localStorage.setItem('appData', value)
+    if (typeof localStorage.setItem === 'function') {
+      localStorage.setItem('appData', value);
+    }    
   }, [value]);
+
   return (
     <div>
       React Marathon, appData: <input value={value}
